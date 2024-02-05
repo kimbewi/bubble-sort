@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Bubble Sort App</h1>
+        <form method="post">
+            <label for="input_list">Array: <span class="array-text">(Enter elements separated by spaces)</span></label>
+            <input type="text" id="input_list" name="input_list" required>
+            <button type="submit">Sort</button>
+        </form>
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% elif sorted_array %}
+            <p class="result-label">Sorted array:</p>
+            <div class="result-container">
+                <ul>
+                    {% for item in sorted_array %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
